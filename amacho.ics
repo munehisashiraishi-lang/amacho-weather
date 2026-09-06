@@ -3,33 +3,36 @@ VERSION:2.0
 PRODID:-//Amacho Weather Calendar//NONSGML v1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:海士町 天気予報
+X-WR-CALNAME:海士町 週間天気予報
 X-WR-TIMEZONE:Asia/Tokyo
 BEGIN:VEVENT
-SUMMARY:海士町: くもり　所により　雨
+SUMMARY:海士町: くもり 所により 雨
 DTSTART;VALUE=DATE:20260906
 DTEND;VALUE=DATE:20260907
-DTSTAMP:20260906T183432Z
+DTSTAMP:20260906T192843Z
 UID:2026-09-06-weather@amacho-weather
-DESCRIPTION:【海士町（隠岐）の天気予報】\n天気: くもり
- 　所により　雨\n発表元: 気象庁
+DESCRIPTION:【海士町（隠岐）の天気予報】\n■ 天気：く
+ もり 所により 雨\n■ 降水確率：20%\n■ 最高/最低気温
+ ：-℃ / -℃\n\n発表元：気象庁
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:海士町: くもり　昼前　まで　時々　雨
+SUMMARY:海士町: くもり 昼前 まで 時々 雨
 DTSTART;VALUE=DATE:20260907
 DTEND;VALUE=DATE:20260908
-DTSTAMP:20260906T183432Z
+DTSTAMP:20260906T192843Z
 UID:2026-09-07-weather@amacho-weather
-DESCRIPTION:【海士町（隠岐）の天気予報】\n天気: くもり
- 　昼前　まで　時々　雨\n発表元: 気象庁
+DESCRIPTION:【海士町（隠岐）の天気予報】\n■ 天気：く
+ もり 昼前 まで 時々 雨\n■ 降水確率：50%\n■ 最高/最低
+ 気温：-℃ / -℃\n\n発表元：気象庁
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:海士町: くもり　後　一時　雨
+SUMMARY:海士町: くもり 後 一時 雨
 DTSTART;VALUE=DATE:20260908
 DTEND;VALUE=DATE:20260909
-DTSTAMP:20260906T183432Z
+DTSTAMP:20260906T192843Z
 UID:2026-09-08-weather@amacho-weather
-DESCRIPTION:【海士町（隠岐）の天気予報】\n天気: くもり
- 　後　一時　雨\n発表元: 気象庁
+DESCRIPTION:【海士町（隠岐）の天気予報】\n■ 天気：く
+ もり 後 一時 雨\n■ 降水確率：---\n■ 最高/最低気温：-
+ ℃ / -℃\n\n発表元：気象庁
 END:VEVENT
 END:VCALENDAR
