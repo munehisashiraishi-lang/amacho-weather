@@ -7,6 +7,39 @@ import requests
 OUTPUT_FILE = "amacho.ics"
 JMA_URL = "https://www.jma.go.jp/bosai/forecast/data/forecast/320000.json"
 
+# 気象庁 天気コード -> テキスト変換マップ
+JMA_WEATHER_CODES = {
+    "100": "晴れ",
+    "101": "晴れ時々くもり",
+    "102": "晴れ一時雨",
+    "103": "晴れ時々雨",
+    "104": "晴れ一時雪",
+    "105": "晴れ時々雪",
+    "110": "晴れ後時々くもり",
+    "111": "晴れ後くもり",
+    "112": "晴れ後一時雨",
+    "113": "晴れ後時々雨",
+    "114": "晴れ後雨",
+    "200": "くもり",
+    "201": "くもり時々晴れ",
+    "202": "くもり一時雨",
+    "203": "くもり時々雨",
+    "204": "くもり一時雪",
+    "205": "くもり時々雪",
+    "210": "くもり後時々晴れ",
+    "211": "くもり後晴れ",
+    "212": "くもり後一時雨",
+    "213": "くもり後時々雨",
+    "214": "くもり後雨",
+    "300": "雨",
+    "301": "雨時々晴れ",
+    "302": "雨時々くもり",
+    "303": "雨時々雪",
+    "311": "雨後晴れ",
+    "313": "雨後くもり",
+    "400": "雪",
+}
+
 
 def fetch_weather():
     response = requests.get(JMA_URL)
@@ -17,7 +50,6 @@ def fetch_weather():
 def clean_text(text):
     if not text:
         return ""
-    # 空白の乱れを綺麗に整形
     return re.sub(r"\s+", " ", text.replace("\u3000", " ")).strip()
 
 
@@ -31,21 +63,18 @@ def create_calendar():
     cal.add("x-wr-calname", "海士町 週間天気予報")
     cal.add("x-wr-timezone", "Asia/Tokyo")
 
-    # 日付ごとのデータ格納用辞書
     weather_by_date = {}
 
     # -------------------------------------------------------------
-    # 1. 短期予報 (今日・明日・明後日の詳細データ)
+    # 1. 短期予報 (今日・明日・明後日のテキスト表現)
     # -------------------------------------------------------------
     if len(data) > 0:
         time_series = data[0].get("timeSeries", [])
-
-        # 天気
         if len(time_series) > 0:
             ts_w = time_series[0]
             dates = ts_w.get("timeDefines", [])
             for area in ts_w.get("areas", []):
-                if area.get("area", {}).get("code") == "320020":  # 隠岐エリア
+                if area.get("area", {}).get("code") == "320020":  # 隠岐
                     for i, t_str in enumerate(dates):
                         d_str = (
                             datetime.fromisoformat(t_str).date().isoformat()
@@ -73,30 +102,19 @@ def create_calendar():
                                 weather_by_date[d_str]["pop"] = pop_val
 
     # -------------------------------------------------------------
-    # 2. 週間予報 (3日目〜7日目のデータ)
+    # 2. 週間予報 (後半日程の補充)
     # -------------------------------------------------------------
     if len(data) > 1:
         time_series_w = data[1].get("timeSeries", [])
 
-        # 週間天気 (コードから変換、またはテロップ)
+        # 天気コード & 降水確率
         if len(time_series_w) > 0:
             ts_w2 = time_series_w[0]
             dates = ts_w2.get("timeDefines", [])
             for area in ts_w2.get("areas", []):
                 if area.get("area", {}).get("code") == "320020":
                     pops = area.get("pops", [])
-                    weather_codes = area.get("weatherCodes", [])
-
-                    # 天気コード変換マップ（主要な天気）
-                    code_map = {
-                        "100": "晴れ",
-                        "101": "晴れ時々くもり",
-                        "200": "くもり",
-                        "201": "くもり時々晴れ",
-                        "300": "雨",
-                        "301": "雨時々晴れ",
-                    }
-
+                    codes = area.get("weatherCodes", [])
                     for i, t_str in enumerate(dates):
                         d_str = (
                             datetime.fromisoformat(t_str).date().isoformat()
@@ -104,18 +122,13 @@ def create_calendar():
                         if d_str not in weather_by_date:
                             weather_by_date[d_str] = {}
 
-                        # 短期データにない後半日程の天気を補充
+                        # 短期予報にない日付の天気をコードから変換して補う
                         if "weather" not in weather_by_date[d_str]:
-                            w_code = (
-                                weather_codes[i]
-                                if i < len(weather_codes)
-                                else ""
-                            )
-                            weather_by_date[d_str]["weather"] = code_map.get(
-                                w_code, "くもり"
+                            w_code = codes[i] if i < len(codes) else ""
+                            weather_by_date[d_str]["weather"] = (
+                                JMA_WEATHER_CODES.get(w_code, "くもり")
                             )
 
-                        # 週間降水確率の補充
                         if (
                             "pop" not in weather_by_date[d_str]
                             and i < len(pops)
@@ -143,7 +156,7 @@ def create_calendar():
                             weather_by_date[d_str]["max_temp"] = temps_max[i]
 
     # -------------------------------------------------------------
-    # 3. iCalイベント出力（7日分生成）
+    # 3. iCal生成（取得できた全日程分）
     # -------------------------------------------------------------
     for d_str, info in sorted(weather_by_date.items()):
         if "weather" not in info:
@@ -165,7 +178,7 @@ def create_calendar():
         event.add("dtstart", target_date)
         event.add("dtend", target_date + timedelta(days=1))
 
-        # 松江版と同様の形式でタイトル生成
+        # タイトル表示
         event.add("summary", f"海士町: {weather_text}{temp_str}")
 
         desc = (
@@ -182,7 +195,7 @@ def create_calendar():
 
     with open(OUTPUT_FILE, "wb") as f:
         f.write(cal.to_ical())
-    print("1週間分の天気予報カレンダーを正常に作成しました。")
+    print(f"合計 {len(weather_by_date)} 日分の予報を生成しました。")
 
 
 if __name__ == "__main__":
