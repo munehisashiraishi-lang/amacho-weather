@@ -6,83 +6,83 @@ METHOD:PUBLISH
 X-WR-CALNAME:海士町 週間天気予報
 X-WR-TIMEZONE:Asia/Tokyo
 BEGIN:VEVENT
-SUMMARY:海士町: くもり
-DTSTART;VALUE=DATE:20261102
-DTEND;VALUE=DATE:20261103
-DTSTAMP:20261102T191020Z
-UID:2026-11-02-weather@amacho-weather
-DESCRIPTION:【海士町（隠岐）の天気予報】\n■ 天気：く
- もり\n■ 降水確率：10%\n■ 最高/最低気温：-℃ / -℃\n\n
- 発表元：気象庁
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:海士町: 晴れ 昼過ぎ まで 時々 くもり
+SUMMARY:海士町: 晴れ
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261104
-DTSTAMP:20261102T191020Z
+DTSTAMP:20261103T024521Z
 UID:2026-11-03-weather@amacho-weather
 DESCRIPTION:【海士町（隠岐）の天気予報】\n■ 天気：晴
- れ 昼過ぎ まで 時々 くもり\n■ 降水確率：10%\n■ 最高/
- 最低気温：-℃ / -℃\n\n発表元：気象庁
+ れ\n■ 降水確率：0%\n■ 最高/最低気温：-℃ / -℃\n\n発
+ 表元：気象庁
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:海士町: 晴れ 後 くもり 20℃/12℃
+SUMMARY:海士町: 晴れ 昼過ぎ から くもり
 DTSTART;VALUE=DATE:20261104
 DTEND;VALUE=DATE:20261105
-DTSTAMP:20261102T191020Z
+DTSTAMP:20261103T024521Z
 UID:2026-11-04-weather@amacho-weather
 DESCRIPTION:【海士町（隠岐）の天気予報】\n■ 天気：晴
- れ 後 くもり\n■ 降水確率：20%\n■ 最高/最低気温：20℃
-  / 12℃\n\n発表元：気象庁
+ れ 昼過ぎ から くもり\n■ 降水確率：10%\n■ 最高/最低
+ 気温：-℃ / -℃\n\n発表元：気象庁
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:海士町: くもり一時雨 23℃/13℃
+SUMMARY:海士町: くもり 後 一時 雨 23℃/13℃
 DTSTART;VALUE=DATE:20261105
 DTEND;VALUE=DATE:20261106
-DTSTAMP:20261102T191020Z
+DTSTAMP:20261103T024521Z
 UID:2026-11-05-weather@amacho-weather
 DESCRIPTION:【海士町（隠岐）の天気予報】\n■ 天気：く
- もり一時雨\n■ 降水確率：50%\n■ 最高/最低気温：23℃ /
-  13℃\n\n発表元：気象庁
+ もり 後 一時 雨\n■ 降水確率：60%\n■ 最高/最低気温：2
+ 3℃ / 13℃\n\n発表元：気象庁
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:海士町: くもり 20℃/11℃
+SUMMARY:海士町: くもり 20℃/12℃
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
-DTSTAMP:20261102T191020Z
+DTSTAMP:20261103T024521Z
 UID:2026-11-06-weather@amacho-weather
 DESCRIPTION:【海士町（隠岐）の天気予報】\n■ 天気：く
- もり\n■ 降水確率：40%\n■ 最高/最低気温：20℃ / 11℃\n
+ もり\n■ 降水確率：40%\n■ 最高/最低気温：20℃ / 12℃\n
  \n発表元：気象庁
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:海士町: くもり 16℃/8℃
+SUMMARY:海士町: くもり 17℃/9℃
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
-DTSTAMP:20261102T191020Z
+DTSTAMP:20261103T024521Z
 UID:2026-11-07-weather@amacho-weather
 DESCRIPTION:【海士町（隠岐）の天気予報】\n■ 天気：く
- もり\n■ 降水確率：40%\n■ 最高/最低気温：16℃ / 8℃\n\n
+ もり\n■ 降水確率：40%\n■ 最高/最低気温：17℃ / 9℃\n\n
  発表元：気象庁
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:海士町: くもり時々晴れ 16℃/8℃
+SUMMARY:海士町: くもり時々晴れ 18℃/9℃
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
-DTSTAMP:20261102T191020Z
+DTSTAMP:20261103T024521Z
 UID:2026-11-08-weather@amacho-weather
 DESCRIPTION:【海士町（隠岐）の天気予報】\n■ 天気：く
- もり時々晴れ\n■ 降水確率：30%\n■ 最高/最低気温：16
- ℃ / 8℃\n\n発表元：気象庁
+ もり時々晴れ\n■ 降水確率：30%\n■ 最高/最低気温：18
+ ℃ / 9℃\n\n発表元：気象庁
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:海士町: くもり 17℃/9℃
+SUMMARY:海士町: くもり一時雨 17℃/9℃
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261110
-DTSTAMP:20261102T191020Z
+DTSTAMP:20261103T024521Z
 UID:2026-11-09-weather@amacho-weather
 DESCRIPTION:【海士町（隠岐）の天気予報】\n■ 天気：く
- もり\n■ 降水確率：40%\n■ 最高/最低気温：17℃ / 9℃\n\n
+ もり一時雨\n■ 降水確率：50%\n■ 最高/最低気温：17℃ /
+  9℃\n\n発表元：気象庁
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:海士町: くもり 16℃/9℃
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+DTSTAMP:20261103T024521Z
+UID:2026-11-10-weather@amacho-weather
+DESCRIPTION:【海士町（隠岐）の天気予報】\n■ 天気：く
+ もり\n■ 降水確率：40%\n■ 最高/最低気温：16℃ / 9℃\n\n
  発表元：気象庁
 END:VEVENT
 END:VCALENDAR
